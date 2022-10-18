@@ -1,35 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "../../UI/Button/Button";
-import "./CourseInput.css";
+import Button from '../../UI/Button/Button';
+import './CourseInput.css';
 
-const CourseInput = (props) => {
-  const [enteredValue, setEnteredValue] = useState("");
-  // useState for invalid user input
-  const [isValid, setIsValid] = useState(true);
+const CourseInput = props => {
+  const [enteredValue, setEnteredValue] = useState('');
 
-  const goalInputChangeHandler = (event) => {
-    // trim checks for white space when inputted
-    // reset error colors if input is valid
-    if (event.target.value.trim().length > 0) {
-      setIsValid(true);
-    }
+  const goalInputChangeHandler = event => {
     setEnteredValue(event.target.value);
   };
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = event => {
     event.preventDefault();
-    // if checks if the input is blank
-    if (enteredValue.trim().length === 0) {
-      return setIsValid(false);
-    }
     props.onAddGoal(enteredValue);
   };
 
   return (
     <form onSubmit={formSubmitHandler}>
-      {/* dynamically set colors if user input is invalid connected with invalid CSS class */}
-      <div className={`form-control ${!isValid ? "invalid" : ""}`}>
+      <div className="form-control">
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </div>
