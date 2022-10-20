@@ -61,6 +61,7 @@ const CourseInput = (props) => {
   return (
     <form onSubmit={formSubmitHandler}>
       {/* connects css styles to div by taking class names from the css file */}
+      {/* changes the css to invalid styles if user input returns not valid */}
       <div className={`${styles['form-control']} ${!isValid && styles.invalid}`}>
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
